@@ -7,13 +7,13 @@ class ShardKeyTest {
 
     @Test
     void getShardKey() {
-        ShardKey shardKey = ShardKey.getShardKey("1");
+        ShardKey shardKey = ShardKey.setShardKey("1");
         Assertions.assertThat(shardKey).isEqualTo(ShardKey.MAIN01);
     }
 
     @Test
     void notExistShardKey() {
-        Assertions.assertThatThrownBy(() -> ShardKey.getShardKey("11"))
+        Assertions.assertThatThrownBy(() -> ShardKey.setShardKey("11"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
