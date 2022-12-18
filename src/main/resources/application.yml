@@ -1,0 +1,27 @@
+datasource:
+  main:
+    shards:
+      - url: jdbc:mysql://localhost:3306/main01?serverTimezone=UTC&characterEncoding=UTF8
+        username: chanseok
+        password: 1234
+      - url: jdbc:mysql://localhost:3306/main02?serverTimezone=UTC&characterEncoding=UTF8
+        username: chanseok
+        password: 1234
+      - url: jdbc:mysql://localhost:3306/main03?serverTimezone=UTC&characterEncoding=UTF8
+        username: chanseok
+        password: 1234
+      - url: jdbc:mysql://localhost:3306/main04?serverTimezone=UTC&characterEncoding=UTF8
+        username: chanseok
+        password: 1234
+      - url: jdbc:mysql://localhost:3306/main05?serverTimezone=UTC&characterEncoding=UTF8
+        username: chasneok
+        password: 1234
+
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
