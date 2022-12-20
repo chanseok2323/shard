@@ -4,14 +4,18 @@ public class UserContextHolder {
     private static final ThreadLocal<ShardKey> userContext = new ThreadLocal<>();
 
     public static void setSharding(String userKey) {
-        getUserContext().get().setShardKey(userKey);
+        getShardKey().setShardKey(userKey);
     }
 
     public static void clearSharding() {
         getUserContext().remove();
     }
 
-    public static ThreadLocal<ShardKey> getUserContext() {
+    private static ThreadLocal<ShardKey> getUserContext() {
         return userContext;
+    }
+
+    public static ShardKey getShardKey() {
+        return getUserContext().get();
     }
 }

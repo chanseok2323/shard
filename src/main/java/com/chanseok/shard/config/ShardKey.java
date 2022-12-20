@@ -6,7 +6,8 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public enum ShardKey {
-    MAIN00("0"), MAIN01("1"), MAIN02("2"), MAIN03("3"), MAIN04("4"), MAIN05("5"), MAIN06("6"), MAIN07("7"), MAIN08("8"), MAIN09("9");
+    MAIN_00("0"), MAIN_01("1"), MAIN_02("2"), MAIN_03("3"), MAIN_04("4"),
+    MAIN_05("5"), MAIN_06("6"), MAIN0_7("7"), MAIN_08("8"), MAIN_09("9");
     private String userKey;
 
     public static ShardKey setShardKey(String userKey) {

@@ -14,7 +14,7 @@ datasource:
         username: chanseok
         password: 1234
       - url: jdbc:mysql://localhost:3306/main05?serverTimezone=UTC&characterEncoding=UTF8
-        username: chasneok
+        username: chanseok
         password: 1234
 
 spring:

@@ -8,7 +8,7 @@ class ShardKeyTest {
     @Test
     void getShardKey() {
         ShardKey shardKey = ShardKey.setShardKey("1");
-        Assertions.assertThat(shardKey).isEqualTo(ShardKey.MAIN01);
+        Assertions.assertThat(shardKey).isEqualTo(ShardKey.MAIN_01);
     }
 
     @Test
