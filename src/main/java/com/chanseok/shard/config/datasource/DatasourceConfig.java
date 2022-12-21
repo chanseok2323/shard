@@ -31,13 +31,14 @@ public class DatasourceConfig {
             HikariConfig hikariConfig = new HikariConfig();
             hikariConfig.setJdbcUrl(dataProperty.getUrl());
             hikariConfig.setUsername(dataProperty.getUsername());
-            hikariConfig.setPassword(dataProperty.getPassword());
+            hikariConfig.setPassword(dataProperty .getPassword());
             DataSource dataSource = new HikariDataSource(hikariConfig);
 
             datasourceMap.put(ShardKey.values()[i], dataSource);
         }
 
         dataSourceRouter.setTargetDataSources(datasourceMap);
+        dataSourceRouter.setDefaultTargetDataSource(datasourceMap.get(ShardKey.MAIN_00));
         dataSourceRouter.afterPropertiesSet();
 
         return new LazyConnectionDataSourceProxy(dataSourceRouter);
