@@ -4,10 +4,7 @@ import com.chanseok.shard.config.ShardKey;
 import com.chanseok.shard.config.ShardsDatasourceProperty;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
-import lombok.Getter;
-import lombok.Setter;
-import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.boot.context.properties.ConstructorBinding;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.LazyConnectionDataSourceProxy;
@@ -17,24 +14,24 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 @Configuration
-@ConstructorBinding
-@Getter @Setter
-@ConfigurationProperties(prefix = "datasource")
+@RequiredArgsConstructor
 public class DatasourceConfig {
-    private ShardsDatasourceProperty main;
+
+    private final ShardsDatasourceProperty shardsDatasourceProperty;
 
     @Bean
     public DataSource mainDataSource() {
         DataSourceRouter dataSourceRouter = new DataSourceRouter();
         Map<Object, Object> datasourceMap = new LinkedHashMap<>();
+        ShardsDatasourceProperty.Shards main = shardsDatasourceProperty.getMain();
 
         for (int i = 0; i < main.getShards().size(); i++) {
-            ShardsDatasourceProperty.Shard shard = main.getShards().get(i);
+            ShardsDatasourceProperty.DataProperty dataProperty = main.getShards().get(i);
 
             HikariConfig hikariConfig = new HikariConfig();
-            hikariConfig.setJdbcUrl(shard.getUrl());
-            hikariConfig.setUsername(shard.getUsername());
-            hikariConfig.setPassword(shard.getPassword());
+            hikariConfig.setJdbcUrl(dataProperty.getUrl());
+            hikariConfig.setUsername(dataProperty.getUsername());
+            hikariConfig.setPassword(dataProperty.getPassword());
             DataSource dataSource = new HikariDataSource(hikariConfig);
 
             datasourceMap.put(ShardKey.values()[i], dataSource);
