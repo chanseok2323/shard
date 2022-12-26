@@ -1,6 +1,5 @@
 package com.chanseok.shard.domain;
 
-import com.chanseok.shard.common.MemberIdentityGenerator;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -12,7 +11,6 @@ public class Member {
     @Id
     @Column(name = "user_no", length = 20, unique = true)
     private String no;
-
     private String email;
     private String name;
     private String password;
@@ -22,8 +20,8 @@ public class Member {
     }
 
     @Builder
-    public Member(String email, String name, String password, Integer age) {
-        this.no = MemberIdentityGenerator.generateUserIdentity();
+    public Member(String no, String email, String name, String password, Integer age) {
+        this.no = no;
         this.email = email;
         this.name = name;
         this.password = password;

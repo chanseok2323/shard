@@ -1,4 +1,4 @@
-package com.chanseok.shard.repository;
+package com.chanseok.shard.dto.repository;
 
 import com.chanseok.shard.domain.Member;
 import org.springframework.data.jpa.repository.JpaRepository;

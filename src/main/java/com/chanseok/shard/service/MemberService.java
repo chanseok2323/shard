@@ -2,7 +2,8 @@ package com.chanseok.shard.service;
 
 import com.chanseok.shard.config.Sharding;
 import com.chanseok.shard.domain.Member;
-import com.chanseok.shard.repository.MemberRepository;
+import com.chanseok.shard.dto.MemberDto;
+import com.chanseok.shard.dto.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,7 +22,14 @@ public class MemberService {
     }
 
     @Transactional
-    public void save(String userNo, Member member) {
+    public void save(String userNo, MemberDto memberDto) {
+        Member member = Member.builder()
+                .no(memberDto.getNo())
+                .name(memberDto.getName())
+                .email(memberDto.getEmail())
+                .password(memberDto.getPassword())
+                .age(memberDto.getAge())
+                .build();
         memberRepository.save(member);
     }
 }
