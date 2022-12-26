@@ -3,7 +3,7 @@ package com.chanseok.shard.service.impl;
 import com.chanseok.shard.config.Sharding;
 import com.chanseok.shard.domain.Member;
 import com.chanseok.shard.dto.MemberDto;
-import com.chanseok.shard.dto.repository.MemberRepository;
+import com.chanseok.shard.repository.MemberRepository;
 import com.chanseok.shard.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

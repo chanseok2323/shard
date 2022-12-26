@@ -3,7 +3,6 @@ package com.chanseok.shard.service;
 import com.chanseok.shard.common.MemberIdentityGenerator;
 import com.chanseok.shard.domain.Member;
 import com.chanseok.shard.dto.MemberDto;
-import com.chanseok.shard.dto.repository.MemberRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
