@@ -1,6 +1,7 @@
 package com.chanseok.shard.dto;
 
 import com.chanseok.shard.common.MemberIdentityGenerator;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -25,5 +26,14 @@ public class MemberDto {
 
     private void setNo(String no) {
         this.no = no;
+    }
+
+    @Builder
+    public MemberDto(String no, String email, String name, String password, Integer age) {
+        this.no = no;
+        this.email = email;
+        this.name = name;
+        this.password = password;
+        this.age = age;
     }
 }

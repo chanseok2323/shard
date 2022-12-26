@@ -1,6 +1,8 @@
 package com.chanseok.shard.service;
 
+import com.chanseok.shard.common.MemberIdentityGenerator;
 import com.chanseok.shard.domain.Member;
+import com.chanseok.shard.dto.MemberDto;
 import com.chanseok.shard.dto.repository.MemberRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -14,24 +16,23 @@ class MemberServiceTest {
 
     @Autowired
     MemberService memberService;
-    @Autowired
-    private MemberRepository memberRepository;
 
     @Test
     void saveMember() {
-        Member member = Member.builder().email("chanseok2323@gmail.com")
-                .no("12345678976543212345")
-                .name("chanseok")
+        String userNo = MemberIdentityGenerator.generateUserIdentity();
+        MemberDto memberDto = MemberDto.builder()
+                .no(userNo)
+                .email("chanseok2323@gmail.com")
+                .name("test111122")
                 .password("qq12345")
                 .age(30)
                 .build();
 
+        memberService.save(memberDto.getNo(), memberDto);
 
-        memberRepository.save(member);
+        Member findMember = memberService.findByUserNo(userNo).get();
 
-        Member findMember = memberRepository.findMemberByName("chanseok");
-
-        Assertions.assertThat(member.getNo()).isEqualTo(findMember.getNo());
+        Assertions.assertThat(memberDto.getNo()).isEqualTo(findMember.getNo());
     }
 
 }
