@@ -20,6 +20,6 @@ public class MemberController {
     public void save(@RequestBody MemberDto memberDto) {
         String userNo = memberDto.generateMemberNo();
         log.info("userNo = {}", userNo);
-        memberService.save(userNo.substring(0, 1), memberDto);
+        memberService.save(userNo, memberDto);
     }
 }

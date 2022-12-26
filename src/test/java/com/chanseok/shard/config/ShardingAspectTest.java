@@ -14,4 +14,5 @@ class ShardingAspectTest {
     void aopIsTrue() {
         System.out.println(AopUtils.isAopProxy(shardingAspect));
     }
+
 }
