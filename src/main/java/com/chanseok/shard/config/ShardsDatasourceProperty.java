@@ -2,7 +2,6 @@ package com.chanseok.shard.config;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.ConstructorBinding;
 
@@ -17,15 +16,19 @@ public class ShardsDatasourceProperty {
 
     private final Shards main;
 
-    @Getter @Setter
+    @Getter
+    @ConstructorBinding
+    @RequiredArgsConstructor
     public static class Shards {
-        private List<DataProperty> shards;
+        private final List<DataProperty> shards;
     }
 
-    @Getter @Setter
+    @Getter
+    @ConstructorBinding
+    @RequiredArgsConstructor
     public static class DataProperty {
-        private String url;
-        private String username;
-        private String password;
+        private final String url;
+        private final String username;
+        private final String password;
     }
 }
